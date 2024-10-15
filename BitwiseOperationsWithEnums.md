@@ -99,7 +99,7 @@ class Program
         // This combines the values: 4 (March) | 8 (April) | 16 (May)
         TrainingMonths trainingMonths = TrainingMonths.March | TrainingMonths.April | TrainingMonths.May;
 
-        // Return the integer value of the combined training months
+        // Return the integer value (28) of the combined training months
         return (int)trainingMonths; // Cast to int to get the numeric representation
     }
 
