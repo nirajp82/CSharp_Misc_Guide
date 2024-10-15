@@ -20,15 +20,15 @@ The `<<` operator is the left shift operator. It shifts the bits of a number to 
   - Result: `0001` (which is **1** in decimal).
 
 - **1 << 1**:
-  - Shifts `1` left by 1 position.
+  - Takes the binary representation of `1` (which is `0001`) and shifts it left by 1 position.
   - Result: `0010` (which is **2** in decimal).
 
 - **1 << 2**:
-  - Shifts `1` left by 2 positions.
+  - Takes the binary representation of `1` (which is `0001`) and shifts it left by 2 positions.
   - Result: `0100` (which is **4** in decimal).
 
 - **1 << 3**:
-  - Shifts `1` left by 3 positions.
+  - Takes the binary representation of `1` (which is `0001`) and shifts it left by 3 positions.
   - Result: `1000` (which is **8** in decimal).
 
 This means that by using the `<<` operator, each value assigned to an enum can represent a unique bit in an integer. This allows for efficient combination and representation of multiple values.
