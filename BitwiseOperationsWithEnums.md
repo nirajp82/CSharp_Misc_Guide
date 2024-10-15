@@ -5,9 +5,40 @@
 The `[Flags]` attribute in C# allows an enum to be treated as a bit field. This means you can combine multiple enum values using bitwise operations. This is particularly useful when you want to represent a combination of options or features using a single variable. 
 
 #### Advantages:
-- **Efficiency**: Instead of having multiple boolean variables to represent options, you can use a single variable to hold multiple states, making the code cleaner and more efficient.
+- **Efficiency**: Instead of having multiple boolean variables to represent options, you can use a single variable to hold multiple states, making the code cleaner and more efficient. When you combine these values, each flag sets a different bit in the resulting number. For example, if you combine March, April, and May:
+```csharp
+TrainingMonths trainingMonths = TrainingMonths.March | TrainingMonths.April | TrainingMonths.May;
+```
 - **Clarity**: It’s easier to understand and maintain code when options are combined into a single variable.
 - **Bitwise Operations**: You can use bitwise operations to check, set, and unset individual options easily.
+```csharp
+//Checking Flags
+if ((trainingMonths & TrainingMonths.June) == TrainingMonths.June)
+{
+    Console.WriteLine("Training needs to be finished in June.");
+}
+
+//Unsetting Flags
+trainingMonths &= ~TrainingMonths.April; // Removing April
+```
+
+When you define an enum with the `[Flags]` attribute, each value in the enum is assigned a unique power of 2. This allows each value to represent a specific bit in a binary number. Here’s why:
+
+1. **Powers of 2**:
+   - Each value corresponds to a specific bit position in binary. By using powers of 2, each value can be represented by a single bit in an integer.
+   - The values are assigned as follows:
+     - **1** = \(2^0\) (binary `0001`)
+     - **2** = \(2^1\) (binary `0010`)
+     - **4** = \(2^2\) (binary `0100`)
+     - **8** = \(2^3\) (binary `1000`)
+     - **16** = \(2^4\) (binary `00010000`)
+     - **32** = \(2^5\) (binary `00100000`)
+     - **64** = \(2^6\) (binary `01000000`)
+     - **128** = \(2^7\) (binary `10000000`), and so forth.
+
+2. **Why Use Powers of 2?**:
+   - **Unique Representation**: Each value can be represented by a single bit, which allows for easy combination of values. When you combine them using the bitwise OR operator (`|`), the resulting number has a unique binary representation that corresponds to the combined flags.
+   - **Efficient Bitwise Operations**: Since each flag occupies a unique bit position, you can use bitwise operations to check, set, or unset individual flags easily. This is efficient in terms of both memory and performance.
 
 ### Understanding the `<<` Operator
 
